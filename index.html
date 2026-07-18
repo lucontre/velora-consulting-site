@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora Apps | Orden, automatización y visibilidad para tu delivery de software</title>
+<meta name="description" content="Release management, gestión de proyectos IT y automatización sobre Jira/JSM y Azure DevOps. Proyectos de 4 semanas con precio fijo. Servicio bilingüe ES/EN.">
+<link rel="canonical" href="https://www.veloraapps.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.veloraapps.com/">
+<meta property="og:title" content="Velora Apps | Orden y automatización para tu delivery de software">
+<meta property="og:description" content="Automatización Jira/JSM, release management y visibilidad ejecutiva. Proyectos de 4 semanas con precio fijo. ES/EN.">
+<meta property="og:image" content="https://www.veloraapps.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E5E56'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='36' font-weight='800' fill='white' text-anchor='middle'%3Ev%3C/text%3E%3C/svg%3E">
+<!-- ANALYTICS: descomentar UNA opción antes de publicar -->
+<!-- Opción A (GA4, gratis): <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXX');</script> -->
+<!-- Opción B (Plausible, privacidad): <script defer data-domain="veloraapps.com" src="https://plausible.io/js/script.js"></script> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#F4F6F8; --ink:#101826; --teal:#0E5E56; --teal-soft:#E4F0EE;
+  --amber:#FFB224; --steel:#64748B; --line:#DCE3E8; --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--porcelain);color:var(--ink);line-height:1.6;font-size:16px}
+.mono{font-family:'JetBrains Mono',monospace}
+h1,h2,h3{font-family:'Archivo',sans-serif;letter-spacing:-0.02em;line-height:1.15}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);display:block;margin-bottom:14px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* NAV */
+nav{position:sticky;top:0;background:rgba(244,246,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;color:var(--ink);text-decoration:none}
+.logo span{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--steel);text-decoration:none;font-size:14px;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.lang-toggle{border:1px solid var(--line);background:var(--white);border-radius:6px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:12px;cursor:pointer;color:var(--steel)}
+.btn{display:inline-block;background:var(--ink);color:var(--white);padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{background:var(--teal);transform:translateY(-1px)}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:#e9a010;color:var(--ink)}
+.btn-sm{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.hero{padding:88px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:800;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p.lead{font-size:18px;color:var(--steel);margin-bottom:32px;max-width:48ch}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:13px;color:var(--steel);margin-top:14px}
+
+/* SIGNATURE FLOW PANEL */
+.flow-panel{background:var(--ink);border-radius:16px;padding:28px;box-shadow:0 24px 60px rgba(16,24,38,.18)}
+.flow-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.flow-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8FA3B8}
+.flow-live{font-family:'JetBrains Mono',monospace;font-size:11px;color:#5EDCB1;display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:#5EDCB1;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.flow-steps{display:flex;flex-direction:column;gap:0}
+.fstep{display:flex;align-items:flex-start;gap:14px;position:relative;padding-bottom:22px}
+.fstep:last-child{padding-bottom:0}
+.fstep::before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:#243247}
+.fstep:last-child::before{display:none}
+.fnode{width:28px;height:28px;border-radius:8px;background:#1C2A3E;border:1px solid #33465F;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;position:relative;z-index:1}
+.fstep.active .fnode{background:var(--teal);border-color:var(--teal)}
+.fbody{padding-top:2px}
+.flabel{font-size:14px;font-weight:600;color:#E8EEF4}
+.fdesc{font-size:12.5px;color:#8FA3B8}
+.ftag{font-family:'JetBrains Mono',monospace;font-size:10px;background:#1C2A3E;color:#5EDCB1;border-radius:4px;padding:2px 7px;margin-left:8px}
+.fstep{opacity:1}
+.slide{display:none;animation:fadeIn .45s ease}
+.slide.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.car-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+.car-dot{width:26px;height:5px;border-radius:3px;background:#33465F;border:none;cursor:pointer;padding:0;transition:background .2s}
+.car-dot.active{background:var(--amber)}
+.flow-metric{margin-top:22px;padding-top:18px;border-top:1px solid #243247;display:flex;justify-content:space-between}
+.fm-num{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;color:#fff}
+.fm-lab{font-size:11px;color:#8FA3B8}
+
+/* CAPABILITIES STRIP */
+.cap-strip{background:var(--ink);overflow:hidden;padding:14px 0;border-top:1px solid var(--line)}
+.cap-track{display:flex;gap:28px;white-space:nowrap;width:max-content;animation:capScroll 40s linear infinite;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:#B7C4D0;text-transform:uppercase}
+.cap-strip:hover .cap-track{animation-play-state:paused}
+.cap-sep{color:var(--amber)}
+@keyframes capScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){
+  .cap-track{animation:none;flex-wrap:wrap;white-space:normal;width:auto;justify-content:center;padding:0 24px}
+}
+
+/* SYMPTOMS */
+.section{padding:80px 0}
+.section-alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section h2{font-size:clamp(26px,3.4vw,38px);font-weight:700;margin-bottom:14px;max-width:26ch}
+.section .sub{color:var(--steel);max-width:60ch;margin-bottom:44px}
+.sym-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sym{background:var(--porcelain);border:1px solid var(--line);border-radius:12px;padding:24px}
+.section-alt .sym{background:var(--porcelain)}
+.sym .mono{font-size:12px;color:var(--teal);display:block;margin-bottom:10px}
+.sym h3{font-size:17px;margin-bottom:8px}
+.sym p{font-size:14px;color:var(--steel)}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.svc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:12px}
+.svc-featured{border:2px solid var(--teal);box-shadow:0 12px 32px rgba(14,94,86,.10)}
+.svc-badge{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:5px;padding:4px 10px;align-self:flex-start}
+.svc-badge-alt{background:var(--teal-soft);color:var(--teal)}
+.svc h3{font-size:20px}
+.svc p{font-size:14.5px;color:var(--steel)}
+.svc-price{font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--ink)!important}
+.svc-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);background:var(--porcelain);color:var(--steel);border-radius:100px;padding:4px 12px}
+.svc-link{color:var(--teal);font-weight:600;font-size:14px;text-decoration:none;margin-top:auto}
+.svc-link:hover{text-decoration:underline}
+.svc-note{font-size:12.5px!important;font-style:italic}
+
+/* PROCESS */
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.week{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px;position:relative}
+.wk-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);background:var(--teal-soft);border-radius:5px;padding:3px 9px;display:inline-block;margin-bottom:14px}
+.week h3{font-size:16px;margin-bottom:8px}
+.week p{font-size:13.5px;color:var(--steel)}
+
+/* DELIVERABLES + PRICE */
+.offer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.dlist{list-style:none}
+.dlist li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.dlist li:last-child{border-bottom:none}
+.check{color:var(--teal);font-weight:700;flex-shrink:0}
+.price-card{background:var(--ink);color:#E8EEF4;border-radius:16px;padding:36px;position:sticky;top:90px}
+.price-card .mono{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8FA3B8;display:block;margin-bottom:12px}
+.price{font-family:'Archivo',sans-serif;font-size:46px;font-weight:800;color:#fff}
+.price small{font-size:16px;font-weight:600;color:#8FA3B8}
+.price-card p{font-size:14px;color:#B7C4D0;margin:14px 0 24px}
+.price-card .btn{width:100%;text-align:center}
+.guarantee{font-size:12.5px;color:#8FA3B8;margin-top:14px;text-align:center}
+
+/* CRED */
+.cred{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cred-item{border-left:3px solid var(--teal);padding:4px 0 4px 18px}
+.cred-item .fm-num{color:var(--ink);font-size:26px}
+.cred-item p{font-size:14px;color:var(--steel)}
+
+/* CTA */
+.cta-final{background:var(--teal);color:#fff;border-radius:20px;padding:64px 48px;text-align:center}
+.cta-final h2{color:#fff;margin:0 auto 12px}
+.cta-final p{color:#CDE6E1;margin-bottom:28px}
+
+/* FOUNDER */
+.founder{display:flex;gap:32px;align-items:flex-start}
+.founder-avatar{width:104px;height:104px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;flex-shrink:0}
+.founder-bio{color:var(--steel);max-width:64ch;font-size:15.5px}
+.founder-note{margin-top:10px;font-size:13.5px;color:var(--teal);font-weight:600}
+
+/* FAQ */
+.faq-list{margin-top:36px;max-width:760px}
+.faq-item{background:var(--white);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:0 20px}
+.faq-item summary{cursor:pointer;font-weight:600;font-size:15.5px;padding:16px 0;list-style:none;position:relative;padding-right:28px}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:14px;font-size:20px;color:var(--teal);font-weight:400}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{font-size:14.5px;color:var(--steel);padding-bottom:16px}
+
+/* ERP CROSS-PROMO */
+.erp-band{display:flex;align-items:center;justify-content:space-between;gap:36px;background:var(--porcelain);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:14px;padding:36px 40px}
+.erp-band .btn{flex-shrink:0}
+@media(max-width:860px){.erp-band{flex-direction:column;align-items:flex-start}}
+
+/* FOOTER */
+footer{padding:40px 0;color:var(--steel);font-size:13px}
+.foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media(max-width:860px){
+  .hero-grid,.offer-grid{grid-template-columns:1fr}
+  .sym-grid,.weeks,.cred,.svc-grid{grid-template-columns:1fr}
+  .founder{flex-direction:column}
+  .nav-links{display:none}
+  .price-card{position:static}
+  .hero{padding:56px 0 48px}
+  .section{padding:56px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .fstep{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#">velora<span>.</span></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#problema" data-i18n="nav1">El problema</a>
+        <a href="#servicios" data-i18n="nav0">Servicios</a>
+        <a href="#proceso" data-i18n="nav2">Cómo funciona</a>
+        <a href="#precio" data-i18n="nav3">Inversión</a>
+        <a href="/erp" data-i18n="navErp">Velora ERP ↗</a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+      <a href="#precio" class="btn btn-sm" data-i18n="navCta">Agendar llamada</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-i18n="heroEyebrow">Automatización, release management y delivery</span>
+      <h1 data-i18n="heroH1">Orden, automatización y visibilidad para tu <em>delivery de software</em></h1>
+      <p class="lead" data-i18n="heroLead">Procesos claros, reportes que se generan solos y releases que salen a tiempo. Lo construimos con tu equipo, sin contratar headcount y sin interrumpir tu operación.</p>
+      <div class="hero-ctas">
+        <a href="#precio" class="btn btn-amber" data-i18n="heroCta1">Agendar 30 min sin costo</a>
+        <a href="#proceso" class="btn" style="background:transparent;color:var(--ink);border:1px solid var(--line)" data-i18n="heroCta2">Ver el proceso</a>
+      </div>
+      <p class="hero-note" data-i18n="heroNote">Servicio bilingüe español / inglés. Precio fijo, sin horas extra facturadas.</p>
+    </div>
+
+    <div class="flow-panel" role="region" aria-label="Lo que construimos">
+      <div class="slide active" id="slide0">
+        <div class="flow-head">
+          <span class="flow-title">velora / automation flow</span>
+          <span class="flow-live"><span class="dot"></span>running</span>
+        </div>
+        <div class="flow-steps">
+          <div class="fstep active"><div class="fnode">1</div><div class="fbody"><div class="flabel"><span data-i18n="f1l">Solicitud entra al portal</span> <span class="ftag">auto</span></div><div class="fdesc" data-i18n="f1d">Formulario estructurado, cero emails sueltos</div></div></div>
+          <div class="fstep active"><div class="fnode">2</div><div class="fbody"><div class="flabel"><span data-i18n="f2l">Ruteo al equipo correcto</span> <span class="ftag">auto</span></div><div class="fdesc" data-i18n="f2d">Sin triage manual, sin tickets perdidos</div></div></div>
+          <div class="fstep active"><div class="fnode">3</div><div class="fbody"><div class="flabel"><span data-i18n="f3l">Ticket vinculado y priorizado</span> <span class="ftag">auto</span></div><div class="fdesc" data-i18n="f3d">Trazabilidad completa de punta a punta</div></div></div>
+          <div class="fstep active"><div class="fnode">4</div><div class="fbody"><div class="flabel"><span data-i18n="f4l">Dashboard ejecutivo actualizado</span> <span class="ftag">live</span></div><div class="fdesc" data-i18n="f4d">Gerencia ve el estado real, sin pedir reportes</div></div></div>
+        </div>
+        <div class="flow-metric">
+          <div><div class="fm-num">6-10 h</div><div class="fm-lab" data-i18n="m1l">ahorradas por semana</div></div>
+          <div><div class="fm-num">0</div><div class="fm-lab" data-i18n="m2l">reportes manuales</div></div>
+          <div><div class="fm-num">4 sem</div><div class="fm-lab" data-i18n="m3l">de inicio a entrega</div></div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide1">
+        <div class="flow-head">
+          <span class="flow-title">velora / release governance</span>
+          <span class="flow-live"><span class="dot"></span>on track</span>
+        </div>
+        <div class="flow-steps">
+          <div class="fstep active"><div class="fnode">1</div><div class="fbody"><div class="flabel"><span data-i18n="g1l">Calendario de releases definido</span> <span class="ftag">plan</span></div><div class="fdesc" data-i18n="g1d">Major, minor y hotfix con fechas claras</div></div></div>
+          <div class="fstep active"><div class="fnode">2</div><div class="fbody"><div class="flabel"><span data-i18n="g2l">Criterios de Go/No-Go</span> <span class="ftag">gate</span></div><div class="fdesc" data-i18n="g2d">Decisiones con datos, no con presión</div></div></div>
+          <div class="fstep active"><div class="fnode">3</div><div class="fbody"><div class="flabel"><span data-i18n="g3l">Scope bajo control</span> <span class="ftag">scope</span></div><div class="fdesc" data-i18n="g3d">Cut-off respetado, excepciones gestionadas</div></div></div>
+          <div class="fstep active"><div class="fnode">4</div><div class="fbody"><div class="flabel"><span data-i18n="g4l">Rollout coordinado</span> <span class="ftag">ship</span></div><div class="fdesc" data-i18n="g4d">Piloto, despliegue y rollback previstos</div></div></div>
+        </div>
+        <div class="flow-metric">
+          <div><div class="fm-num">1</div><div class="fm-lab" data-i18n="gm1">calendario único de releases</div></div>
+          <div><div class="fm-num">0</div><div class="fm-lab" data-i18n="gm2">sorpresas en producción</div></div>
+          <div><div class="fm-num">100%</div><div class="fm-lab" data-i18n="gm3">trazabilidad de scope</div></div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide2">
+        <div class="flow-head">
+          <span class="flow-title">velora / executive visibility</span>
+          <span class="flow-live"><span class="dot"></span>live</span>
+        </div>
+        <div class="flow-steps">
+          <div class="fstep active"><div class="fnode">1</div><div class="fbody"><div class="flabel"><span data-i18n="v1l">Datos en vivo desde Jira</span> <span class="ftag">live</span></div><div class="fdesc" data-i18n="v1d">Sin exportar, sin copiar y pegar</div></div></div>
+          <div class="fstep active"><div class="fnode">2</div><div class="fbody"><div class="flabel"><span data-i18n="v2l">Dashboard para gerencia</span> <span class="ftag">auto</span></div><div class="fdesc" data-i18n="v2d">Estado real, disponible siempre</div></div></div>
+          <div class="fstep active"><div class="fnode">3</div><div class="fbody"><div class="flabel"><span data-i18n="v3l">Reporte semanal autogenerado</span> <span class="ftag">auto</span></div><div class="fdesc" data-i18n="v3d">Nadie arma slides el viernes</div></div></div>
+          <div class="fstep active"><div class="fnode">4</div><div class="fbody"><div class="flabel"><span data-i18n="v4l">Decisiones con información real</span> <span class="ftag">team</span></div><div class="fdesc" data-i18n="v4d">Una sola fuente de verdad para todos</div></div></div>
+        </div>
+        <div class="flow-metric">
+          <div><div class="fm-num">0</div><div class="fm-lab" data-i18n="vm1">reportes manuales</div></div>
+          <div><div class="fm-num">1</div><div class="fm-lab" data-i18n="vm2">fuente de verdad</div></div>
+          <div><div class="fm-num">24/7</div><div class="fm-lab" data-i18n="vm3">visibilidad</div></div>
+        </div>
+      </div>
+
+      <div class="car-dots" role="tablist" aria-label="Cambiar panel">
+        <button class="car-dot active" data-slide="0" aria-label="Automatización"></button>
+        <button class="car-dot" data-slide="1" aria-label="Release governance"></button>
+        <button class="car-dot" data-slide="2" aria-label="Visibilidad ejecutiva"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="cap-strip" aria-label="Áreas de práctica">
+  <div class="cap-track">
+    <span>Release Management</span><span class="cap-sep">·</span>
+    <span>IT Project Management</span><span class="cap-sep">·</span>
+    <span>Delivery Management</span><span class="cap-sep">·</span>
+    <span>Jira / JSM: Implementation, Improvement &amp; Automation</span><span class="cap-sep">·</span>
+    <span>Azure DevOps: Implementation, Improvement &amp; Automation</span><span class="cap-sep">·</span>
+    <span>Executive Dashboards</span><span class="cap-sep">·</span>
+    <span>Fractional PMO</span><span class="cap-sep">·</span>
+    <span>Release Management</span><span class="cap-sep">·</span>
+    <span>IT Project Management</span><span class="cap-sep">·</span>
+    <span>Delivery Management</span><span class="cap-sep">·</span>
+    <span>Jira / JSM: Implementation, Improvement &amp; Automation</span><span class="cap-sep">·</span>
+    <span>Azure DevOps: Implementation, Improvement &amp; Automation</span><span class="cap-sep">·</span>
+    <span>Executive Dashboards</span><span class="cap-sep">·</span>
+    <span>Fractional PMO</span><span class="cap-sep">·</span>
+  </div>
+</div>
+
+<section class="section section-alt" id="problema">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="symEyebrow">Los síntomas</span>
+    <h2 data-i18n="symH2">Si esto te suena familiar, tu problema no es la herramienta. Es la configuración.</h2>
+    <p class="sub" data-i18n="symSub">Jira no falla por ser Jira. Falla porque creció sin diseño: campos que nadie usa, flujos que nadie entiende y reportes que se arman a mano cada viernes.</p>
+    <div class="sym-grid">
+      <div class="sym"><span class="mono">01</span><h3 data-i18n="sym1h">El reporte semanal se hace a mano</h3><p data-i18n="sym1p">Alguien de tu equipo pierde horas cada semana copiando datos a Excel o PowerPoint para contarle a gerencia lo que Jira ya sabe.</p></div>
+      <div class="sym"><span class="mono">02</span><h3 data-i18n="sym2h">Los tickets se pierden o duplican</h3><p data-i18n="sym2p">Las solicitudes llegan por email, chat y pasillo. Nadie sabe qué está pendiente de verdad ni quién es el responsable.</p></div>
+      <div class="sym"><span class="mono">03</span><h3 data-i18n="sym3h">Gerencia no confía en los datos</h3><p data-i18n="sym3p">Las decisiones se toman con información vieja o con la versión de quien habla más fuerte en la reunión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="servicios">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="svEyebrow">Servicios</span>
+    <h2 data-i18n="svH2">Una práctica, dos formas de trabajar contigo</h2>
+    <p class="sub" data-i18n="svSub">Todo bajo el mismo enfoque: ordenar y automatizar tu delivery de software sin contratar headcount.</p>
+    <div class="svc-grid">
+      <div class="svc svc-featured">
+        <span class="svc-badge" data-i18n="sv1b">Empieza aquí</span>
+        <h3 data-i18n="sv1h">Automatización de Jira / JSM y Azure DevOps</h3>
+        <div class="svc-chips"><span class="chip">Jira</span><span class="chip">JSM</span><span class="chip">Azure DevOps</span></div>
+        <p data-i18n="sv1p">Proyecto cerrado de 4 semanas: auditoría de tu instancia, 2 a 3 automatizaciones de alto impacto y un dashboard ejecutivo con datos en vivo. Misma metodología en ambas plataformas.</p>
+        <p class="svc-price" data-i18n="sv1pr">Precio fijo por proyecto, definido antes de empezar</p>
+        <a href="#proceso" class="svc-link" data-i18n="sv1l">Ver el proceso de 4 semanas →</a>
+      </div>
+      <div class="svc">
+        <span class="svc-badge svc-badge-alt" data-i18n="sv2b">Recurrente</span>
+        <h3 data-i18n="sv2h">Release y Delivery Management Fraccional</h3>
+        <div class="svc-chips"><span class="chip" data-i18n="ch1">Releases</span><span class="chip" data-i18n="ch2">Proyectos IT</span><span class="chip">PMO</span></div>
+        <p data-i18n="sv2p">Gobernanza de releases, gestión de proyectos IT y funciones de PMO para equipos que necesitan orden senior pero no justifican un rol full time: calendario de releases, criterios de Go/No-Go, control de scope y reporting ejecutivo. Independiente de la herramienta que usen.</p>
+        <p class="svc-price" data-i18n="sv2pr">Retainer mensual de alcance fijo</p>
+        <p class="svc-note" data-i18n="sv2n">Disponible para clientes con proyecto entregado o por referencia directa.</p>
+        <a href="#precio" class="svc-link" data-i18n="sv2l">Conversemos tu caso →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="proceso">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="prEyebrow">El proceso</span>
+    <h2 data-i18n="prH2">Diagnóstico y Automatización Express: 4 semanas, alcance cerrado</h2>
+    <p class="sub" data-i18n="prSub">Un solo proyecto, un solo precio, un calendario claro. Trabajamos sobre tu instancia real sin interrumpir a tu equipo.</p>
+    <div class="weeks">
+      <div class="week"><span class="wk-num" data-i18n="wk1n">Semana 1</span><h3 data-i18n="wk1h">Auditoría</h3><p data-i18n="wk1p">Revisamos tu Jira/JSM completo: qué está mal configurado, qué sobra y qué falta. Entregamos hallazgos priorizados por impacto.</p></div>
+      <div class="week"><span class="wk-num" data-i18n="wk2n">Semana 2</span><h3 data-i18n="wk2h">Automatización</h3><p data-i18n="wk2p">Implementamos 2 a 3 automatizaciones de alto impacto: ruteo de solicitudes, tickets vinculados, alertas de vencimiento.</p></div>
+      <div class="week"><span class="wk-num" data-i18n="wk3n">Semana 3</span><h3 data-i18n="wk3h">Dashboard</h3><p data-i18n="wk3p">Construimos un dashboard ejecutivo con el estado real del trabajo, visible para gerencia sin pedirle reportes a nadie.</p></div>
+      <div class="week"><span class="wk-num" data-i18n="wk4n">Semana 4</span><h3 data-i18n="wk4h">Entrega y capacitación</h3><p data-i18n="wk4p">Documentamos todo, capacitamos a tu equipo para mantenerlo y cerramos con recomendaciones de siguiente nivel.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="precio">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="ofEyebrow">La oferta</span>
+    <h2 data-i18n="ofH2">Todo lo que recibes, por un precio fijo</h2>
+    <div class="offer-grid" style="margin-top:44px">
+      <ul class="dlist">
+        <li><span class="check">✓</span><span data-i18n="d1">Documento de auditoría con hallazgos priorizados por impacto y esfuerzo</span></li>
+        <li><span class="check">✓</span><span data-i18n="d2">2 a 3 automatizaciones implementadas, probadas y documentadas en tu instancia</span></li>
+        <li><span class="check">✓</span><span data-i18n="d3">1 dashboard ejecutivo funcionando con datos en vivo</span></li>
+        <li><span class="check">✓</span><span data-i18n="d4">Capacitación a tu equipo para mantener y extender lo construido</span></li>
+        <li><span class="check">✓</span><span data-i18n="d5">Sesión de cierre con roadmap de siguientes mejoras</span></li>
+        <li><span class="check">✓</span><span data-i18n="d6">Todo en español o inglés, según tu equipo</span></li>
+      </ul>
+      <div class="price-card">
+        <span class="mono" data-i18n="pcLabel">Diagnóstico y Automatización Express</span>
+        <div class="price" data-i18n="pcPrice">Precio fijo</div>
+        <p data-i18n="pcDesc">Un solo precio por el proyecto completo de 4 semanas, definido antes de empezar. 50% al inicio, 50% a la entrega. Sin sorpresas ni horas extra facturadas. Lo conversamos en la llamada.</p>
+        <a href="#" class="btn btn-amber" data-i18n="pcCta">Agendar llamada de 30 min</a>
+        <p class="guarantee" data-i18n="pcNote">La llamada es de diagnóstico, no de venta. Si no te sirve, te lo decimos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="crEyebrow">Por qué Velora</span>
+    <h2 data-i18n="crH2">Experiencia de producción real, no teoría</h2>
+    <div class="cred" style="margin-top:44px">
+      <div class="cred-item"><div class="fm-num">10+</div><p data-i18n="cr1">años en release management, gestión de proyectos IT y gobernanza de portafolio en una empresa pública multinacional</p></div>
+      <div class="cred-item"><div class="fm-num">5</div><p data-i18n="cr2">países donde operan los portales, automatizaciones y dashboards que hemos construido</p></div>
+      <div class="cred-item"><div class="fm-num">2</div><p data-i18n="cr3">idiomas de servicio completo: tu equipo trabaja en el suyo, sin fricción</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="fundador">
+  <div class="wrap">
+    <div class="founder">
+      <div class="founder-avatar" aria-hidden="true">V.</div>
+      <div>
+        <span class="eyebrow" data-i18n="fdEyebrow">Quién ejecuta tu proyecto</span>
+        <h2 style="margin-bottom:10px" data-i18n="fdName">Consultoría senior, sin intermediarios</h2>
+        <p class="founder-bio" data-i18n="fdBio">Velora está dirigida por un Senior Release Manager y Technical Leader con más de 10 años liderando releases, gobernanza de portafolio y automatización de operaciones en una empresa pública multinacional con presencia en 5 países. La persona que diagnostica tu caso es la misma que ejecuta tu proyecto.</p>
+        <p class="founder-note" data-i18n="fdNote">Conocerás al consultor en la primera llamada, antes de cualquier compromiso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2 data-i18n="fqH2">Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary data-i18n="q1">¿Necesitan acceso de administrador a nuestro Jira?</summary>
+        <p data-i18n="a1">Para implementar automatizaciones, sí. Si su política de seguridad no lo permite, trabajamos en sesiones acompañadas con su administrador ejecutando. El proyecto no se detiene por eso.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="q2">¿Cuánto tiempo de mi equipo consume el proyecto?</summary>
+        <p data-i18n="a2">Entre 1 y 2 horas por semana de un punto de contacto. El resto lo hacemos nosotros. El diseño completo del proyecto parte de no interrumpir su operación.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="q3">Ya tenemos un administrador de Jira. ¿Para qué los necesitamos?</summary>
+        <p data-i18n="a3">No venimos a reemplazarlo. El administrador resuelve el día a día; nosotros rediseñamos el flujo una vez, lo automatizamos y se lo entregamos documentado para que él lo mantenga. Su admin termina el proyecto sabiendo más que al inicio.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="q4">¿Trabajan con Jira Cloud, Data Center y Azure DevOps?</summary>
+        <p data-i18n="a4">Sí, con los tres. El alcance de automatizaciones disponibles varía según la plataforma y se define en la auditoría de la semana 1. Los servicios de release management y gestión de proyectos son independientes de la herramienta.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="q5">¿Qué pasa si el proyecto no resuelve nuestro problema?</summary>
+        <p data-i18n="a5">La llamada inicial es de diagnóstico: si su caso no encaja, se lo decimos ahí y no hay proyecto. Y el alcance se firma por escrito con criterios de aceptación por entregable, así que ambos sabemos exactamente qué significa terminado.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="erp">
+  <div class="wrap">
+    <div class="erp-band">
+      <div>
+        <span class="eyebrow" data-i18n="erpEyebrow">Producto · Velora ERP</span>
+        <h2 style="margin-bottom:10px" data-i18n="erpH2">¿Tu negocio necesita un sistema, no una consultoría?</h2>
+        <p class="sub" style="margin-bottom:0" data-i18n="erpP">Velora ERP centraliza ventas, compras, inventario, finanzas, punto de venta y más en una sola plataforma, diseñada para PyMEs de Latinoamérica. Multimoneda, bilingüe y con alertas en tiempo real.</p>
+      </div>
+      <a href="/erp" class="btn" data-i18n="erpCta">Conocer Velora ERP →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-final">
+      <h2 data-i18n="ctaH2">¿Cuántas horas pierde tu equipo cada semana en reportes manuales?</h2>
+      <p data-i18n="ctaP">En 30 minutos te decimos si podemos recuperarlas. Sin costo y sin compromiso.</p>
+      <a href="#" class="btn btn-amber" data-i18n="ctaBtn">Agendar mi llamada</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Velora Apps · veloraapps.com</span>
+    <span>hola@veloraapps.com</span>
+  </div>
+</footer>
+
+<script>
+// Signature: hero carousel
+const slides = document.querySelectorAll('.slide');
+const cdots = document.querySelectorAll('.car-dot');
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cur = 0, timer = null;
+function goTo(i){
+  cur = i % slides.length;
+  slides.forEach((s, k) => s.classList.toggle('active', k === cur));
+  cdots.forEach((d, k) => d.classList.toggle('active', k === cur));
+}
+function startAuto(){
+  if (reduced) return;
+  clearInterval(timer);
+  timer = setInterval(() => goTo(cur + 1), 5000);
+}
+cdots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); startAuto(); }));
+const panel = document.querySelector('.flow-panel');
+panel.addEventListener('mouseenter', () => clearInterval(timer));
+panel.addEventListener('mouseleave', startAuto);
+startAuto();
+
+// Language toggle
+const i18n = {
+  en: {
+    nav0:"Services", nav1:"The problem", nav2:"How it works", nav3:"Pricing", navCta:"Book a call",
+    heroEyebrow:"Automation, release management and delivery",
+    svEyebrow:"Services", svH2:"One practice, two ways to work with you",
+    svSub:"All under the same approach: bringing order and automation to your software delivery, no headcount required.",
+    sv1b:"Start here", sv1h:"Jira / JSM and Azure DevOps Automation",
+    sv1p:"Fixed 4-week project: an audit of your instance, 2 to 3 high-impact automations and an executive dashboard running on live data. Same methodology on both platforms.",
+    ch1:"Releases", ch2:"IT Projects", sv2l:"Let's talk about your case →",
+    sv1pr:"Flat project fee, defined before we start", sv1l:"See the 4-week process →",
+    sv2b:"Recurring", sv2h:"Fractional Release and Delivery Management",
+    sv2p:"Release governance, IT project management and PMO functions for teams that need senior structure but cannot justify a full-time role: release calendars, Go/No-Go criteria, scope control and executive reporting. Independent of whatever tool you use.",
+    sv2pr:"Fixed-scope monthly retainer",
+    sv2n:"Available for clients with a delivered project or by direct referral.",
+    heroH1:'Order, automation and visibility for your <em>software delivery</em>',
+    heroLead:"Clear processes, reports that build themselves and releases that ship on time. We build it with your team, no new headcount, no disruption.",
+    f1l:"Request enters the portal", f1d:"Structured form, zero loose emails",
+    f2l:"Routed to the right team", f2d:"No manual triage, no lost tickets",
+    f3l:"Ticket linked and prioritized", f3d:"End-to-end traceability",
+    f4l:"Executive dashboard updated", f4d:"Leadership sees real status, no reports requested",
+    m1l:"saved per week", m2l:"manual reports", m3l:"from start to delivery",
+    g1l:"Release calendar defined", g1d:"Major, minor and hotfix with clear dates",
+    g2l:"Go/No-Go criteria", g2d:"Decisions on data, not pressure",
+    g3l:"Scope under control", g3d:"Cut-offs enforced, exceptions managed",
+    g4l:"Coordinated rollout", g4d:"Pilot, deployment and rollback planned",
+    gm1:"single release calendar", gm2:"production surprises", gm3:"scope traceability",
+    v1l:"Live data from Jira", v1d:"No exports, no copy-paste",
+    v2l:"Dashboard for leadership", v2d:"Real status, always available",
+    v3l:"Weekly report auto-generated", v3d:"Nobody builds slides on Friday",
+    v4l:"Decisions with real information", v4d:"One source of truth for everyone",
+    vm1:"manual reports", vm2:"source of truth", vm3:"visibility",
+    heroCta1:"Book a free 30-min call", heroCta2:"See the process",
+    heroNote:"Fully bilingual Spanish / English. Flat fee, no billable overruns.",
+    symEyebrow:"The symptoms",
+    symH2:"If this sounds familiar, your problem is not the tool. It is the setup.",
+    symSub:"Jira does not fail because it is Jira. It fails because it grew without design: fields nobody uses, flows nobody understands, and reports built by hand every Friday.",
+    sym1h:"The weekly report is manual", sym1p:"Someone on your team loses hours every week copying data into Excel or PowerPoint to tell leadership what Jira already knows.",
+    sym2h:"Tickets get lost or duplicated", sym2p:"Requests arrive by email, chat and hallway. Nobody knows what is truly pending or who owns it.",
+    sym3h:"Leadership does not trust the data", sym3p:"Decisions get made with stale information, or with the version of whoever speaks loudest in the meeting.",
+    prEyebrow:"The process", prH2:"Express Audit and Automation: 4 weeks, fixed scope",
+    prSub:"One project, one price, one clear calendar. We work on your real instance without disrupting your team.",
+    wk1n:"Week 1", wk1h:"Audit", wk1p:"We review your full Jira/JSM: what is misconfigured, what is redundant, what is missing. You get findings prioritized by impact.",
+    wk2n:"Week 2", wk2h:"Automation", wk2p:"We implement 2 to 3 high-impact automations: request routing, linked tickets, due date alerts.",
+    wk3n:"Week 3", wk3h:"Dashboard", wk3p:"We build an executive dashboard with the real status of work, visible to leadership without asking anyone for reports.",
+    wk4n:"Week 4", wk4h:"Handover and training", wk4p:"We document everything, train your team to maintain it, and close with next-level recommendations.",
+    ofEyebrow:"The offer", ofH2:"Everything you get, for one flat fee",
+    d1:"Audit document with findings prioritized by impact and effort",
+    d2:"2 to 3 automations implemented, tested and documented in your instance",
+    d3:"1 executive dashboard running on live data",
+    d4:"Training so your team can maintain and extend what we built",
+    d5:"Closing session with a roadmap of next improvements",
+    d6:"Everything in Spanish or English, whichever your team prefers",
+    pcLabel:"Express Audit and Automation", pcPrice:"Flat fee",
+    pcDesc:"One price for the full 4-week project, agreed before we start. 50% upfront, 50% on delivery. No surprises, no billable overruns. We discuss it on the call.",
+    pcCta:"Book a 30-min call", pcNote:"The call is a diagnosis, not a pitch. If this is not for you, we will say so.",
+    crEyebrow:"Why Velora", crH2:"Real production experience, not theory",
+    cr1:"years in release management, IT project management and portfolio governance at a multinational public company",
+    cr2:"countries where the portals, automations and dashboards we built are running",
+    cr3:"languages of full service: your team works in theirs, friction-free",
+    navErp:"Velora ERP ↗",
+    erpEyebrow:"Product · Velora ERP",
+    erpH2:"Does your business need a system, not a consultancy?",
+    erpP:"Velora ERP centralizes sales, purchasing, inventory, finance, point of sale and more in a single platform, built for Latin American SMBs. Multi-currency, bilingual, with real-time alerts.",
+    erpCta:"Discover Velora ERP →",
+    fdEyebrow:"Who runs your project", fdName:"Senior consulting, no intermediaries",
+    fdBio:"Velora is led by a Senior Release Manager and Technical Leader with 10+ years leading releases, portfolio governance and operations automation at a multinational public company operating in 5 countries. The person who diagnoses your case is the same person who runs your project.",
+    fdNote:"You will meet the consultant on the first call, before any commitment.",
+    fqH2:"Frequently asked questions",
+    q1:"Do you need admin access to our Jira?",
+    a1:"To implement automations, yes. If your security policy does not allow it, we work in guided sessions with your administrator executing. The project does not stop because of it.",
+    q2:"How much of my team's time does the project take?",
+    a2:"1 to 2 hours per week from a single point of contact. We do the rest. The entire project is designed not to disrupt your operation.",
+    q3:"We already have a Jira admin. Why would we need you?",
+    a3:"We are not here to replace them. Your admin handles the day to day; we redesign the flow once, automate it, and hand it over documented so they can maintain it. Your admin ends the project knowing more than when it started.",
+    q4:"Do you work with Jira Cloud, Data Center and Azure DevOps?",
+    a4:"Yes, all three. The scope of available automations varies by platform and is defined in the week 1 audit. Release management and project management services are tool-independent.",
+    q5:"What if the project does not solve our problem?",
+    a5:"The initial call is a diagnosis: if your case does not fit, we tell you right there and there is no project. And the scope is signed in writing with acceptance criteria per deliverable, so we both know exactly what done means.",
+    ctaH2:"How many hours does your team lose every week on manual reports?",
+    ctaP:"In 30 minutes we will tell you if we can get them back. Free, no strings attached.",
+    ctaBtn:"Book my call"
+  },
+  es: {}
+};
+// Capture Spanish originals
+document.querySelectorAll('[data-i18n]').forEach(el => { i18n.es[el.dataset.i18n] = el.innerHTML; });
+let lang = 'es';
+document.getElementById('langBtn').addEventListener('click', () => {
+  lang = lang === 'es' ? 'en' : 'es';
+  document.getElementById('langBtn').textContent = lang === 'es' ? 'EN' : 'ES';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const t = i18n[lang][el.dataset.i18n];
+    if (t) el.innerHTML = t;
+  });
+});
+</script>
+</body>
+</html>
