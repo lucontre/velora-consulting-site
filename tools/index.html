@@ -81,6 +81,34 @@ nav{position:sticky;top:0;background:rgba(244,246,248,.92);backdrop-filter:blur(
 .prod-soon .prod-icon{background:var(--porcelain);border:1px solid var(--line)}
 .prod-soon .prod-icon svg{stroke:var(--steel)}
 
+/* PRECIOS */
+.pricing{padding:72px 0;border-top:1px solid var(--line)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.plan{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:14px}
+.plan-best{border:2px solid var(--teal);box-shadow:0 12px 32px rgba(14,94,86,.10)}
+.plan-badge{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:5px;padding:4px 10px;align-self:flex-start}
+.plan h3{font-size:19px}
+.plan-price{font-family:'Archivo',sans-serif;font-weight:800;font-size:40px;color:var(--ink);line-height:1}
+.plan-price small{font-size:15px;font-weight:600;color:var(--steel);letter-spacing:0}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;color:var(--steel)}
+.plan ul li{display:flex;gap:10px}
+.plan ul li::before{content:"✓";color:var(--teal);font-weight:700;flex-shrink:0}
+.plan .btn{margin-top:auto;text-align:center}
+.price-note{font-size:13px;color:var(--steel);margin-top:26px;max-width:62ch}
+
+/* Estado de la cuenta en la barra superior */
+.acct-chip{display:none;align-items:center;gap:7px;border:1px solid var(--line);background:var(--white);border-radius:100px;padding:5px 12px;font-size:12.5px;color:var(--steel);max-width:210px}
+.acct-chip.on{display:inline-flex}
+.acct-chip b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acct-dot{width:7px;height:7px;border-radius:50%;background:#5EDCB1;flex-shrink:0}
+
+/* Aviso para quien ya tiene acceso: reemplaza a los precios */
+.has-access{display:none;background:var(--teal-soft);border:1px solid var(--teal);border-radius:14px;padding:30px 34px;align-items:center;justify-content:space-between;gap:28px;margin-top:36px}
+.has-access.on{display:flex}
+.has-access h3{font-size:19px;margin-bottom:6px}
+.has-access p{font-size:14.5px;color:var(--steel)}
+@media(max-width:860px){.price-grid{grid-template-columns:1fr}.has-access{flex-direction:column;align-items:flex-start}}
+
 /* GROWING BAND */
 .grow-band{display:flex;align-items:center;justify-content:space-between;gap:36px;background:var(--porcelain);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:14px;padding:36px 40px}
 .grow-band .btn{flex-shrink:0}
@@ -123,6 +151,7 @@ footer{padding:40px 0;color:var(--steel);font-size:13px}
         <a href="/#proceso" data-i18n="nvProcess">Cómo funciona</a>
         <a href="/tools" aria-current="page" data-i18n="nvTools">Herramientas</a>
       </div>
+      <span class="acct-chip" id="acctChip"><span class="acct-dot"></span><b id="acctEmail"></b></span>
       <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
       <a href="/#precio" class="btn btn-sm" data-i18n="nvCta">Agendar llamada</a>
     </div>
@@ -211,6 +240,52 @@ footer{padding:40px 0;color:var(--steel);font-size:13px}
   </div>
 </section>
 
+<section class="section pricing" id="precios">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="prEyebrow">Acceso</span>
+    <h2 data-i18n="prH2">Guarda tus proyectos y vuelve a ellos cuando quieras</h2>
+    <p class="sub" data-i18n="prSub">Puedes usar las herramientas gratis y guardar hasta 3 proyectos en cada una. El acceso completo quita el límite.</p>
+
+    <!-- Se oculta solo cuando la cuenta ya tiene acceso activo -->
+    <div class="price-grid" id="priceGrid">
+      <article class="plan">
+        <h3 data-i18n="pl1h">Una herramienta</h3>
+        <div class="plan-price">$5 <small data-i18n="pl1per">un solo pago</small></div>
+        <ul>
+          <li data-i18n="pl1a">La herramienta que elijas, para siempre</li>
+          <li data-i18n="pl1b">Proyectos guardados sin límite</li>
+          <li data-i18n="pl1c">Exportar a CSV, imagen y PDF</li>
+        </ul>
+        <a class="btn" href="mailto:hola@veloraapps.com?subject=Acceso%20a%20una%20herramienta%20(%245)" data-i18n="pl1cta">Obtener acceso →</a>
+      </article>
+
+      <article class="plan plan-best">
+        <span class="plan-badge" data-i18n="pl2b">Mejor valor</span>
+        <h3 data-i18n="pl2h">Las tres herramientas</h3>
+        <div class="plan-price">$10 <small data-i18n="pl2per">al mes</small></div>
+        <ul>
+          <li data-i18n="pl2a">Todas las herramientas del catálogo</li>
+          <li data-i18n="pl2b2">Las que vayamos publicando, incluidas</li>
+          <li data-i18n="pl2c">Proyectos guardados sin límite</li>
+          <li data-i18n="pl2d">Cancelas cuando quieras</li>
+        </ul>
+        <a class="btn btn-amber" href="mailto:hola@veloraapps.com?subject=Acceso%20a%20las%203%20herramientas%20(%2410%2Fmes)" data-i18n="pl2cta">Obtener acceso →</a>
+      </article>
+    </div>
+
+    <!-- Aparece en su lugar cuando la cuenta ya pagó -->
+    <div class="has-access" id="hasAccess">
+      <div>
+        <h3 data-i18n="haH">Tu acceso está activo</h3>
+        <p data-i18n="haP">Puedes guardar proyectos sin límite en todas las herramientas.</p>
+      </div>
+      <a class="btn" href="/tools/voltio/" data-i18n="haCta">Abrir Voltio →</a>
+    </div>
+
+    <p class="price-note" data-i18n="prNote">El cobro en línea todavía no está conectado: escríbenos y activamos tu acceso a mano el mismo día.</p>
+  </div>
+</section>
+
 <section class="section-alt">
   <div class="wrap">
     <div class="grow-band">
@@ -261,6 +336,25 @@ const i18n = {
     p5p:"Build circuits by hand on a 3D board and simulate them instantly: battery, resistors, LEDs, potentiometer, fuses and meters. It solves the circuit by nodal analysis and shows the current, voltage and power in every branch.",
     p5l:"Open Voltio →",
 
+    prEyebrow:"Access",
+    prH2:"Save your projects and come back to them whenever",
+    prSub:"You can use the tools for free and save up to 3 projects in each one. Full access removes the limit.",
+    pl1h:"One tool", pl1per:"one time",
+    pl1a:"The tool you pick, forever",
+    pl1b:"Unlimited saved projects",
+    pl1c:"Export to CSV, image and PDF",
+    pl1cta:"Get access →",
+    pl2b:"Best value", pl2h:"All three tools", pl2per:"a month",
+    pl2a:"Every tool in the catalogue",
+    pl2b2:"Plus the ones we publish next",
+    pl2c:"Unlimited saved projects",
+    pl2d:"Cancel whenever you want",
+    pl2cta:"Get access →",
+    haH:"Your access is active",
+    haP:"You can save unlimited projects across every tool.",
+    haCta:"Open Voltio →",
+    prNote:"Online checkout is not wired up yet: write to us and we switch your access on by hand the same day.",
+
     p2b:"Coming soon", p2h:"Total Anatomy",
     p2c1:"Health", p2c2:"Education", p2c3:"Interactive",
     p2p:"An interactive explorer of the human body: move through systems, layers and structures at your own pace, with clear names and relationships. Built to study with, and to explain with.",
@@ -298,6 +392,69 @@ document.getElementById('langBtn').addEventListener('click', () => {
     if (t) el.innerHTML = t;
   });
 });
+
+// ---------------------------------------------------------------------------
+// Estado de la cuenta.
+//
+// La landing y Voltio viven en el mismo origen (www.veloraapps.com), así que
+// comparten localStorage: aquí se puede leer la sesión que guardó el SDK de
+// Supabase dentro de la herramienta, sin cargar el SDK en esta página.
+//
+// Lo único que decide esto es si se muestran los precios. El control real de
+// acceso vive en la base, con políticas por fila: aunque alguien falsee esto
+// desde la consola, no gana ni un proyecto guardado de más.
+// ---------------------------------------------------------------------------
+(function () {
+  var URL_BASE = 'https://mhkaedljjbllqwzbqdsy.supabase.co';
+  var PUB_KEY = 'sb_publishable_e6ZkUOUziQ9sfDNa_pmTWQ_1TJvjQXf';
+  var STORE_KEY = 'sb-mhkaedljjbllqwzbqdsy-auth-token';
+
+  function readSession() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return null;
+      var s = JSON.parse(raw);
+      if (!s || !s.access_token) return null;
+      // expires_at viene en segundos
+      if (s.expires_at && s.expires_at * 1000 < Date.now()) return null;
+      return s;
+    } catch (e) {
+      return null; // almacenamiento bloqueado o JSON corrupto
+    }
+  }
+
+  function show(session, paid) {
+    var chip = document.getElementById('acctChip');
+    var email = document.getElementById('acctEmail');
+    var grid = document.getElementById('priceGrid');
+    var ok = document.getElementById('hasAccess');
+
+    if (session && session.user && session.user.email) {
+      email.textContent = session.user.email;
+      chip.classList.add('on');
+    }
+    if (paid) {
+      grid.style.display = 'none';
+      ok.classList.add('on');
+    }
+  }
+
+  var session = readSession();
+  if (!session) return; // sin sesión: se quedan los precios visibles
+
+  fetch(URL_BASE + '/rest/v1/rpc/my_tool_access', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: PUB_KEY,
+      Authorization: 'Bearer ' + session.access_token
+    },
+    body: JSON.stringify({ p_tool: 'voltio' })
+  })
+    .then(function (r) { return r.ok ? r.json() : false; })
+    .then(function (paid) { show(session, paid === true); })
+    .catch(function () { show(session, false); });
+})();
 </script>
 </body>
 </html>
