@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herramientas Velora | Productos y apps para ordenar tu operación</title>
+<meta name="description" content="El hub de productos Velora: Velora ERP, anatomía humana interactiva, constructor de flujos y constructor de algoritmos. Herramientas propias, bilingües ES/EN.">
+<link rel="canonical" href="https://www.veloraapps.com/tools">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.veloraapps.com/tools">
+<meta property="og:title" content="Herramientas Velora | Productos y apps">
+<meta property="og:description" content="Velora ERP, anatomía humana interactiva, constructor de flujos y constructor de algoritmos. Un solo lugar para todas las herramientas Velora.">
+<meta property="og:image" content="https://www.veloraapps.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E5E56'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='36' font-weight='800' fill='white' text-anchor='middle'%3Ev%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#F4F6F8; --ink:#101826; --teal:#0E5E56; --teal-soft:#E4F0EE;
+  --amber:#FFB224; --steel:#64748B; --line:#DCE3E8; --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--porcelain);color:var(--ink);line-height:1.6;font-size:16px}
+.mono{font-family:'JetBrains Mono',monospace}
+h1,h2,h3{font-family:'Archivo',sans-serif;letter-spacing:-0.02em;line-height:1.15}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);display:block;margin-bottom:14px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* NAV */
+nav{position:sticky;top:0;background:rgba(244,246,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;color:var(--ink);text-decoration:none}
+.logo span{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--steel);text-decoration:none;font-size:14px;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a[aria-current="page"]{color:var(--ink);font-weight:600}
+.lang-toggle{border:1px solid var(--line);background:var(--white);border-radius:6px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:12px;cursor:pointer;color:var(--steel)}
+.btn{display:inline-block;background:var(--ink);color:var(--white);padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{background:var(--teal);transform:translateY(-1px)}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:#e9a010;color:var(--ink)}
+.btn-sm{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.hero{padding:80px 0 44px}
+.hero h1{font-size:clamp(34px,4.6vw,52px);font-weight:800;margin-bottom:20px;max-width:20ch}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p.lead{font-size:18px;color:var(--steel);max-width:56ch}
+.hero-note{font-size:13px;color:var(--steel);margin-top:22px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+.hero-note b{color:var(--ink);font-weight:600}
+
+/* PRODUCT GRID */
+.section{padding:44px 0 80px}
+.section-alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:72px 0}
+.section h2{font-size:clamp(26px,3.4vw,36px);font-weight:700;margin-bottom:14px;max-width:26ch}
+.section .sub{color:var(--steel);max-width:60ch;margin-bottom:40px}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prod{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:14px}
+.prod-featured{border:2px solid var(--teal);box-shadow:0 12px 32px rgba(14,94,86,.10)}
+.prod-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.prod-icon{width:46px;height:46px;border-radius:12px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prod-icon svg{width:24px;height:24px;stroke:var(--teal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.badge{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:5px;padding:4px 10px;display:inline-flex;align-items:center;gap:7px}
+.badge-live{background:var(--teal);color:#fff}
+.badge-soon{background:var(--porcelain);border:1px solid var(--line);color:var(--steel)}
+.dot{width:7px;height:7px;border-radius:50%;background:#5EDCB1;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.prod h3{font-size:20px}
+.prod p{font-size:14.5px;color:var(--steel)}
+.prod-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);background:var(--porcelain);color:var(--steel);border-radius:100px;padding:4px 12px}
+.prod-foot{margin-top:auto;padding-top:4px}
+.prod-link{color:var(--teal);font-weight:600;font-size:14px;text-decoration:none}
+.prod-link:hover{text-decoration:underline}
+.prod-soonnote{font-size:13px;color:var(--steel);font-style:italic}
+.prod-soon .prod-icon{background:var(--porcelain);border:1px solid var(--line)}
+.prod-soon .prod-icon svg{stroke:var(--steel)}
+
+/* GROWING BAND */
+.grow-band{display:flex;align-items:center;justify-content:space-between;gap:36px;background:var(--porcelain);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:14px;padding:36px 40px}
+.grow-band .btn{flex-shrink:0}
+.grow-band .sub{margin-bottom:0}
+
+/* CTA */
+.cta-final{background:var(--teal);color:#fff;border-radius:20px;padding:64px 48px;text-align:center}
+.cta-final h2{color:#fff;margin:0 auto 12px}
+.cta-final p{color:#CDE6E1;margin-bottom:28px}
+
+/* FOOTER */
+footer{padding:40px 0;color:var(--steel);font-size:13px}
+.foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot-inner a{color:var(--steel);text-decoration:none}
+.foot-inner a:hover{color:var(--ink)}
+
+@media(max-width:860px){
+  .prod-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero{padding:52px 0 32px}
+  .section{padding:32px 0 56px}
+  .section-alt{padding:56px 0}
+  .grow-band{flex-direction:column;align-items:flex-start}
+  .cta-final{padding:48px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="/">velora<span>.</span></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/" data-i18n="nvHome">Inicio</a>
+        <a href="/#servicios" data-i18n="nvServices">Servicios</a>
+        <a href="/#proceso" data-i18n="nvProcess">Cómo funciona</a>
+        <a href="/tools" aria-current="page" data-i18n="nvTools">Herramientas</a>
+      </div>
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">EN</button>
+      <a href="/#precio" class="btn btn-sm" data-i18n="nvCta">Agendar llamada</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="heroEyebrow">Productos · Velora Apps</span>
+    <h1 data-i18n="heroH1">Las herramientas que <em>construimos</em> y puedes usar</h1>
+    <p class="lead" data-i18n="heroLead">Además de la consultoría, desarrollamos nuestros propios productos: sistemas de gestión y herramientas que resuelven un problema concreto y lo resuelven bien. Este es el catálogo completo, en un solo lugar.</p>
+    <p class="hero-note"><b data-i18n="hnA">1 disponible</b> <span data-i18n="hnB">· 3 en construcción · y seguimos creciendo</span></p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="prod-grid">
+
+      <article class="prod prod-featured">
+        <div class="prod-top">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-5h6v5"/><path d="M9 11h2M13 11h2"/></svg>
+          </div>
+          <span class="badge badge-live"><span class="dot"></span><span data-i18n="p1b">Disponible</span></span>
+        </div>
+        <h3 data-i18n="p1h">Velora ERP</h3>
+        <div class="prod-chips"><span class="chip" data-i18n="p1c1">Ventas</span><span class="chip" data-i18n="p1c2">Inventario</span><span class="chip">POS</span><span class="chip" data-i18n="p1c3">Finanzas</span></div>
+        <p data-i18n="p1p">Centraliza ventas, compras, inventario, finanzas y punto de venta en una sola plataforma, diseñada para PyMEs de Latinoamérica. Multimoneda, bilingüe y con alertas en tiempo real.</p>
+        <div class="prod-foot"><a href="https://erp.veloraapps.com" class="prod-link" data-i18n="p1l">Conocer Velora ERP →</a></div>
+      </article>
+
+      <article class="prod prod-soon">
+        <div class="prod-top">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2.5"/><path d="M12 7v9M12 16l-3 5M12 16l3 5M6 10.5h12M8.5 10.5 12 8l3.5 2.5"/></svg>
+          </div>
+          <span class="badge badge-soon" data-i18n="p2b">Próximamente</span>
+        </div>
+        <h3 data-i18n="p2h">Anatomía Total</h3>
+        <div class="prod-chips"><span class="chip" data-i18n="p2c1">Salud</span><span class="chip" data-i18n="p2c2">Educación</span><span class="chip" data-i18n="p2c3">Interactivo</span></div>
+        <p data-i18n="p2p">Explorador interactivo del cuerpo humano: recorre sistemas, capas y estructuras a tu ritmo, con nombres y relaciones claras. Pensado para estudiar y para explicar, no solo para mirar.</p>
+        <div class="prod-foot"><span class="prod-soonnote" data-i18n="p2n">En construcción — te avisamos cuando abra.</span></div>
+      </article>
+
+      <article class="prod prod-soon">
+        <div class="prod-top">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="5" rx="1.5"/><rect x="15" y="3" width="6" height="5" rx="1.5"/><rect x="9" y="16" width="6" height="5" rx="1.5"/><path d="M6 8v3h12V8M12 11v5"/></svg>
+          </div>
+          <span class="badge badge-soon" data-i18n="p3b">Próximamente</span>
+        </div>
+        <h3 data-i18n="p3h">Constructor de Flujos</h3>
+        <div class="prod-chips"><span class="chip" data-i18n="p3c1">Procesos</span><span class="chip" data-i18n="p3c2">Diagramas</span><span class="chip" data-i18n="p3c3">Equipos</span></div>
+        <p data-i18n="p3p">Diseña el flujo de trabajo de tu equipo arrastrando pasos, decisiones y responsables. Lo que hoy vive en la cabeza de alguien queda dibujado, compartible y listo para automatizar.</p>
+        <div class="prod-foot"><span class="prod-soonnote" data-i18n="p3n">En construcción — te avisamos cuando abra.</span></div>
+      </article>
+
+      <article class="prod prod-soon">
+        <div class="prod-top">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 6h4M4 12h4M4 18h4"/><rect x="10" y="3" width="10" height="4.5" rx="1.5"/><path d="M15 7.5v3.5M15 11h3v2M15 11l-3 1.5v4.5"/><circle cx="12" cy="19" r="2"/><circle cx="18" cy="15" r="2"/></svg>
+          </div>
+          <span class="badge badge-soon" data-i18n="p4b">Próximamente</span>
+        </div>
+        <h3 data-i18n="p4h">Constructor de Algoritmos</h3>
+        <div class="prod-chips"><span class="chip" data-i18n="p4c1">Lógica</span><span class="chip" data-i18n="p4c2">Aprendizaje</span><span class="chip" data-i18n="p4c3">Visual</span></div>
+        <p data-i18n="p4p">Arma la lógica paso a paso de forma visual y mira cómo se ejecuta. Convierte una idea suelta en un algoritmo que se entiende, se corrige y se puede llevar a código.</p>
+        <div class="prod-foot"><span class="prod-soonnote" data-i18n="p4n">En construcción — te avisamos cuando abra.</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="grow-band">
+      <div>
+        <span class="eyebrow" data-i18n="grEyebrow">Y seguimos creciendo</span>
+        <h2 style="margin-bottom:10px" data-i18n="grH2">Cada herramienta nace de un problema que vimos de cerca</h2>
+        <p class="sub" data-i18n="grP">Construimos lo que nos hizo falta a nosotros y a nuestros clientes. Si tienes un proceso que te duele cada semana, cuéntanoslo: puede ser la siguiente herramienta de esta lista.</p>
+      </div>
+      <a href="mailto:hola@veloraapps.com?subject=Idea%20para%20una%20herramienta%20Velora" class="btn" data-i18n="grCta">Proponer una herramienta →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-final">
+      <h2 data-i18n="ctaH2">¿Necesitas algo hecho a la medida de tu operación?</h2>
+      <p data-i18n="ctaP">Nuestras herramientas resuelven casos comunes. Cuando el tuyo no lo es, lo construimos contigo en un proyecto de 4 semanas con precio fijo.</p>
+      <a href="/#servicios" class="btn btn-amber" data-i18n="ctaBtn">Ver los servicios de consultoría</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Velora Apps · <a href="/">veloraapps.com</a></span>
+    <span><a href="mailto:hola@veloraapps.com">hola@veloraapps.com</a></span>
+  </div>
+</footer>
+
+<script>
+// Language toggle: misma mecanica que el home, el ES se captura del DOM al cargar
+const i18n = {
+  en: {
+    nvHome:"Home", nvServices:"Services", nvProcess:"How it works", nvTools:"Tools", nvCta:"Book a call",
+    heroEyebrow:"Products · Velora Apps",
+    heroH1:"The tools we <em>build</em> — and you can use",
+    heroLead:"Beyond consulting, we build our own products: management systems and tools that solve one concrete problem, and solve it well. This is the full catalog, in one place.",
+    hnA:"1 available", hnB:"· 3 in the works · and still growing",
+
+    p1b:"Available", p1h:"Velora ERP",
+    p1c1:"Sales", p1c2:"Inventory", p1c3:"Finance",
+    p1p:"Brings sales, purchasing, inventory, finance and point of sale together on a single platform, built for Latin American SMBs. Multi-currency, bilingual and with real-time alerts.",
+    p1l:"Explore Velora ERP →",
+
+    p2b:"Coming soon", p2h:"Total Anatomy",
+    p2c1:"Health", p2c2:"Education", p2c3:"Interactive",
+    p2p:"An interactive explorer of the human body: move through systems, layers and structures at your own pace, with clear names and relationships. Built to study with, and to explain with.",
+    p2n:"In the works — we'll let you know when it opens.",
+
+    p3b:"Coming soon", p3h:"Flow Builder",
+    p3c1:"Processes", p3c2:"Diagrams", p3c3:"Teams",
+    p3p:"Design your team's workflow by dragging steps, decisions and owners. What lives in one person's head today becomes drawn, shareable and ready to automate.",
+    p3n:"In the works — we'll let you know when it opens.",
+
+    p4b:"Coming soon", p4h:"Algorithm Builder",
+    p4c1:"Logic", p4c2:"Learning", p4c3:"Visual",
+    p4p:"Assemble logic step by step, visually, and watch it run. Turn a loose idea into an algorithm you can understand, correct and take to code.",
+    p4n:"In the works — we'll let you know when it opens.",
+
+    grEyebrow:"And still growing",
+    grH2:"Every tool starts from a problem we saw up close",
+    grP:"We build what we and our clients were missing. If there is a process that hurts every single week, tell us about it: it could be the next tool on this list.",
+    grCta:"Suggest a tool →",
+
+    ctaH2:"Need something built around your own operation?",
+    ctaP:"Our tools cover the common cases. When yours is not one of them, we build it with you in a fixed-price 4-week project.",
+    ctaBtn:"See consulting services"
+  },
+  es: {}
+};
+document.querySelectorAll('[data-i18n]').forEach(el => { i18n.es[el.dataset.i18n] = el.innerHTML; });
+let lang = 'es';
+document.getElementById('langBtn').addEventListener('click', () => {
+  lang = lang === 'es' ? 'en' : 'es';
+  document.getElementById('langBtn').textContent = lang === 'es' ? 'EN' : 'ES';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const t = i18n[lang][el.dataset.i18n];
+    if (t) el.innerHTML = t;
+  });
+});
+</script>
+</body>
+</html>
